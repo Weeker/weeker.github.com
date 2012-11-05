@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-05T12:21:56+08:00</updated>
+  <updated>2012-11-05T14:29:02+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker]]></name>
@@ -18,7 +18,7 @@
     <link href="http://weeker.github.com/blog/2012/11/05/first/"/>
     <updated>2012-11-05T12:13:00+08:00</updated>
     <id>http://weeker.github.com/blog/2012/11/05/first</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>第一次使用Octopress，另外测试下Linux编辑软件ReTEXT。</p>
 ]]></content>
   </entry>
   
