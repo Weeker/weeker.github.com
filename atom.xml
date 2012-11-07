@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker's Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-07T13:46:18+08:00</updated>
+  <updated>2012-11-07T14:05:52+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -19,6 +19,11 @@
     <updated>2012-11-07T12:37:00+08:00</updated>
     <id>http://weeker.github.com/blog/2012/11/07/aria2-thunderlixianassistant</id>
     <content type="html"><![CDATA[<p><img src="http://weeker.github.com/images/blog/ThunderLixianAssistant_logo128.png" alt="迅雷离线助手" /></p>
+
+<p>运行环境: Ubuntu Desktop 12.10 32bit</p>
+
+<p>安装
+&#8216;sudo apt-get install aria2&#8217;</p>
 
 <p>正在写,稍后更新 :P</p>
 ]]></content>
