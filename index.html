@@ -7,8 +7,11 @@
 	<meta name="author" content="Weeker Liu">
 
 	
-	<meta name="description" content=" 运行环境: Ubuntu Desktop 12.10 32bit 安装
-sudo apt-get install aria2 正在写,稍后更新 :P ">
+	<meta name="description" content="运行环境: Ubuntu Desktop 12.10 32bit 安装aria2
+$ sudo apt-get install aria2 1
+2
+#!/bin/sh
+/usr/bin/aria2c --event-poll=select --dir=/home/weeker/Downloads &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,8 +94,14 @@ sudo apt-get install aria2 正在写,稍后更新 :P ">
 
 <p>运行环境: Ubuntu Desktop 12.10 32bit</p>
 
-<p>安装<br/>
-<code>sudo apt-get install aria2</code></p>
+<p><b>安装aria2</b><br/>
+<code>$ sudo apt-get install aria2</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/bin/sh
+</span><span class='line'>/usr/bin/aria2c --event-poll=select --dir=/home/weeker/Downloads/ -s 5 --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all -c -D --save-session=/home/weeker/Downloads/aria2.session --input-file=/home/weeker/Downloads/aria2.session</span></code></pre></td></tr></table></div></figure>
+
 
 <p>正在写,稍后更新 :P</p>
 
