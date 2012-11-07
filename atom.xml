@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker's Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-07T14:38:25+08:00</updated>
+  <updated>2012-11-07T14:47:38+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -25,12 +25,18 @@
 <p><b>安装aria2</b><br/>
 <code>$ sudo apt-get install aria2</code></p>
 
-<figure class='code'><figcaption><span>Aria2 </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/bin/sh
-</span><span class='line'>/usr/bin/aria2c --event-poll=select --dir=/home/weeker/Downloads/ -s 5 --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all -c -D --save-session=/home/weeker/Downloads/aria2.session --input-file=/home/weeker/Downloads/aria2.session</span></code></pre></td></tr></table></div></figure>
+<p><code>$ vim /etc/init.d/Aria2.sh</code></p>
 
+<figure class='code'><figcaption><span>Aria2.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>/usr/bin/aria2c --event-poll<span class="o">=</span><span class="k">select</span> --dir<span class="o">=</span>/home/weeker/Downloads/ -s 5 --enable-rpc --rpc-listen-all<span class="o">=</span><span class="nb">true</span> --rpc-allow-origin-all -c -D --save-session<span class="o">=</span>/home/weeker/Downloads/aria2.session --input-file<span class="o">=</span>/home/weeker/Downloads/aria2.session
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>$ sudo chmod +x /etc/init.d/Aria2.sh</code>
+<code>$ sudo update-rc.d /etc/init.d/Aria2.sh defaults</code></p>
 
 <p>正在写,稍后更新 :P</p>
 ]]></content>
