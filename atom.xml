@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker's Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-07T15:20:39+08:00</updated>
+  <updated>2012-11-07T16:11:56+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -21,15 +21,15 @@
     <content type="html"><![CDATA[<p><img src="http://weeker.github.com/images/blog/ThunderLixianAssistant_logo128.png" alt="迅雷离线助手" /></p>
 
 <p>运行环境: Ubuntu Desktop 12.10 32bit<br/>
-  当然其他FreeBSD、OSX等系统也可以安装运行Aria2，只是安装命令和开机自动运行命令有所不同而已。</p>
+  当然其他FreeBSD、OSX、OpenWRT等系统也可以安装运行Aria2，只是安装命令和开机自动运行命令有所不同而已。</p>
 
-<p><b>安装aria2</b><br/>
+<p><b>安装Aria2</b><br/>
 <code>$ sudo apt-get install aria2</code></p>
 
 <p><b>设置Ubuntu开机自动运行Aria2</b><br/>
 <code>$ sudo vi /etc/init.d/Aria2.sh</code></p>
 
-<figure class='code'><figcaption><span>Aria2.sh CODE </span></figcaption>
+<figure class='code'><figcaption><span>Aria2.sh CODE (保存错误或未完成的文件，下次启动自动加载) </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
@@ -39,6 +39,11 @@
 
 <p><code>$ sudo chmod +x /etc/init.d/Aria2.sh</code> <br/>
 <code>$ sudo update-rc.d /etc/init.d/Aria2.sh defaults</code></p>
+
+<p><b>安装迅雷离线助手</b><br/>
+1. 安装<a href="https://chrome.google.com/webstore/detail/thunderlixianassistant/eehlmkfpnagoieibahhcghphdbjcdmen">ThunderLixianAssistant for Chrome</a><br/>
+2. 访问<a href="http://cloud.vip.xunlei.com/">迅雷离线下载</a>进行Aria2 JSON-RPC Path设置<br/>
+3. 通过 <a href="http://ziahamza.github.com/webui-aria2/">aria2 Web-Client</a> 或 <a href="http://app.imchao.net/yaaw/">YAAW</a> 进行Aria2 JSON-RPC Path设置后，就可以对aria2进行监控了</p>
 
 <p>Manual<br/>
 <a href="http://aria2.sourceforge.net/manual/en/html/index.html">http://aria2.sourceforge.net/manual/en/html/index.html</a></p>
