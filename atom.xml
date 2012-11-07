@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker's Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-07T14:06:55+08:00</updated>
+  <updated>2012-11-07T14:08:35+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -22,7 +22,7 @@
 
 <p>运行环境: Ubuntu Desktop 12.10 32bit</p>
 
-<p>安装
+<p>安装<br/>
 <code>sudo apt-get install aria2</code></p>
 
 <p>正在写,稍后更新 :P</p>
