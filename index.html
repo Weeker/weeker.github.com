@@ -8,10 +8,10 @@
 
 	
 	<meta name="description" content="运行环境: Ubuntu Desktop 12.10 32bit 安装aria2
-$ sudo apt-get install aria2 $ sudo vi /etc/init.d/Aria2.sh Aria2.sh 1
+$ sudo apt-get install aria2 设置Ubuntu开机自动运行Aria2
+$ sudo vi /etc/init.d/Aria2.sh Aria2.sh CODE 1
 2
-#!/bin/sh
-/usr/bin/aria2c --event- &hellip;">
+#!/bin/sh &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -97,9 +97,10 @@ $ sudo apt-get install aria2 $ sudo vi /etc/init.d/Aria2.sh Aria2.sh 1
 <p><b>安装aria2</b><br/>
 <code>$ sudo apt-get install aria2</code></p>
 
-<p><code>$ sudo vi /etc/init.d/Aria2.sh</code></p>
+<p><b>设置Ubuntu开机自动运行Aria2</b>
+<code>$ sudo vi /etc/init.d/Aria2.sh</code></p>
 
-<figure class='code'><figcaption><span>Aria2.sh </span></figcaption>
+<figure class='code'><figcaption><span>Aria2.sh CODE </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
@@ -107,7 +108,7 @@ $ sudo apt-get install aria2 $ sudo vi /etc/init.d/Aria2.sh Aria2.sh 1
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>$ sudo chmod +x /etc/init.d/Aria2.sh</code>
+<p><code>$ sudo chmod +x /etc/init.d/Aria2.sh</code> <br/>
 <code>$ sudo update-rc.d /etc/init.d/Aria2.sh defaults</code></p>
 
 <p>正在写,稍后更新 :P</p>
