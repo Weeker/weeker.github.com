@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker's Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-07T15:05:49+08:00</updated>
+  <updated>2012-11-07T15:07:21+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -39,7 +39,7 @@
 <p><code>$ sudo chmod +x /etc/init.d/Aria2.sh</code> <br/>
 <code>$ sudo update-rc.d /etc/init.d/Aria2.sh defaults</code></p>
 
-<p>[Manual]http://aria2.sourceforge.net/manual/en/html/index.html &#8220;http://aria2.sourceforge.net/manual/en/html/index.html&#8221;</p>
+<p><a href="http://aria2.sourceforge.net/manual/en/html/index.html" title="http://aria2.sourceforge.net/manual/en/html/index.html">Manual</a></p>
 
 <p><a href="http://ziahamza.github.com/webui-aria2/">webui</a><br/>
 <a href="http://app.imchao.net/yaaw/">     </a></p>
