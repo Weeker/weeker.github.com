@@ -4,7 +4,7 @@
   <title><![CDATA[Weeker's Octopress Blog]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-07T15:07:21+08:00</updated>
+  <updated>2012-11-07T15:11:41+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -21,6 +21,9 @@
     <content type="html"><![CDATA[<p><img src="http://weeker.github.com/images/blog/ThunderLixianAssistant_logo128.png" alt="迅雷离线助手" /></p>
 
 <p>运行环境: Ubuntu Desktop 12.10 32bit</p>
+
+<pre><code>当然其他FreeBSD、OSX等系统也可以安装运行Aria2，只是安装命令和开机自动运行命令有所不同而已。
+</code></pre>
 
 <p><b>安装aria2</b><br/>
 <code>$ sudo apt-get install aria2</code></p>
@@ -39,10 +42,12 @@
 <p><code>$ sudo chmod +x /etc/init.d/Aria2.sh</code> <br/>
 <code>$ sudo update-rc.d /etc/init.d/Aria2.sh defaults</code></p>
 
-<p><a href="http://aria2.sourceforge.net/manual/en/html/index.html" title="http://aria2.sourceforge.net/manual/en/html/index.html">Manual</a></p>
+<p>Manual
+<a href="http://aria2.sourceforge.net/manual/en/html/index.html">http://aria2.sourceforge.net/manual/en/html/index.html</a></p>
 
-<p><a href="http://ziahamza.github.com/webui-aria2/">webui</a><br/>
-<a href="http://app.imchao.net/yaaw/">     </a></p>
+<p>Webui
+1.<a href="http://ziahamza.github.com/webui-aria2/">http://ziahamza.github.com/webui-aria2/</a><br/>
+2.<a href="http://app.imchao.net/yaaw/">http://app.imchao.net/yaaw/</a></p>
 ]]></content>
   </entry>
   
