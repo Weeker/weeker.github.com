@@ -4,7 +4,7 @@
   <title><![CDATA[weeker.org]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-08T16:25:18+08:00</updated>
+  <updated>2012-11-08T17:21:40+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -35,20 +35,585 @@
 <!--more-->
 
 
-<p>升级方法：
-通过WEB管理的 系统工具&#8211;>软件升级</p>
+<p>从TL-WR703N更改为OpenWRT系统：<br/>
+通过TL-WR703N的WEB管理界面，系统工具&#8211;>软件升级，来进行更换OpenWRT系统。</p>
 
-<p>配置：
-第一次连接openwrt需要用&#8221;telnet&#8221;命令，等使用&#8221;passwd&#8221;修改root密码后就系统自动改为ssh连接</p>
+<p><b>第一次连接OpenWRT</b>   <br/>
+首次连接openwrt需要使用&#8221;telnet&#8221;命令，等使用&#8221;passwd&#8221;修改root密码后，系统会自动改为ssh连接方式。你会看到如下提示。</p>
 
-<pre><code>  Use 'passwd' to set your login password
-  this will disable telnet and enable SSH
+<pre><code>Use 'passwd' to set your login password    
+this will disable telnet and enable SSH
 </code></pre>
 
-<p>可以参照以下配置进行相应的修改</p>
+<p>可以参照以下配置进行相应的修改，这样设置完openwrt就可以正常使用了，需要注意的是WIFI是开放式，需要加密请自行参照openwrt官方wiki进行相应修改。</p>
 
-<p>系统设置：
-以下为系统设置，这样设置完openwrt就可以正常使用了，需要注意的是wifi是开放式，需要加密请自行参照openwrt官方进行相应修改。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
+<span class='line-number'>169</span>
+<span class='line-number'>170</span>
+<span class='line-number'>171</span>
+<span class='line-number'>172</span>
+<span class='line-number'>173</span>
+<span class='line-number'>174</span>
+<span class='line-number'>175</span>
+<span class='line-number'>176</span>
+<span class='line-number'>177</span>
+<span class='line-number'>178</span>
+<span class='line-number'>179</span>
+<span class='line-number'>180</span>
+<span class='line-number'>181</span>
+<span class='line-number'>182</span>
+<span class='line-number'>183</span>
+<span class='line-number'>184</span>
+<span class='line-number'>185</span>
+<span class='line-number'>186</span>
+<span class='line-number'>187</span>
+<span class='line-number'>188</span>
+<span class='line-number'>189</span>
+<span class='line-number'>190</span>
+<span class='line-number'>191</span>
+<span class='line-number'>192</span>
+<span class='line-number'>193</span>
+<span class='line-number'>194</span>
+<span class='line-number'>195</span>
+<span class='line-number'>196</span>
+<span class='line-number'>197</span>
+<span class='line-number'>198</span>
+<span class='line-number'>199</span>
+<span class='line-number'>200</span>
+<span class='line-number'>201</span>
+<span class='line-number'>202</span>
+<span class='line-number'>203</span>
+<span class='line-number'>204</span>
+<span class='line-number'>205</span>
+<span class='line-number'>206</span>
+<span class='line-number'>207</span>
+<span class='line-number'>208</span>
+<span class='line-number'>209</span>
+<span class='line-number'>210</span>
+<span class='line-number'>211</span>
+<span class='line-number'>212</span>
+<span class='line-number'>213</span>
+<span class='line-number'>214</span>
+<span class='line-number'>215</span>
+<span class='line-number'>216</span>
+<span class='line-number'>217</span>
+<span class='line-number'>218</span>
+<span class='line-number'>219</span>
+<span class='line-number'>220</span>
+<span class='line-number'>221</span>
+<span class='line-number'>222</span>
+<span class='line-number'>223</span>
+<span class='line-number'>224</span>
+<span class='line-number'>225</span>
+<span class='line-number'>226</span>
+<span class='line-number'>227</span>
+<span class='line-number'>228</span>
+<span class='line-number'>229</span>
+<span class='line-number'>230</span>
+<span class='line-number'>231</span>
+<span class='line-number'>232</span>
+<span class='line-number'>233</span>
+<span class='line-number'>234</span>
+<span class='line-number'>235</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@OpenWrt:~# cat /etc/config/network
+</span><span class='line'>
+</span><span class='line'>config interface 'loopback'
+</span><span class='line'>        option ifname 'lo'
+</span><span class='line'>        option proto 'static'
+</span><span class='line'>        option ipaddr '127.0.0.1'
+</span><span class='line'>        option netmask '255.0.0.0'
+</span><span class='line'>
+</span><span class='line'>config interface 'lan'
+</span><span class='line'>        #option ifname 'eth0' # ---这个要关闭
+</span><span class='line'>        option type 'bridge'
+</span><span class='line'>        option proto 'static'
+</span><span class='line'>        option ipaddr '172.13.13.1'
+</span><span class='line'>        option netmask '255.255.255.0'
+</span><span class='line'>
+</span><span class='line'>config interface 'wan'
+</span><span class='line'>        option ifname 'eth0'
+</span><span class='line'>        option proto 'dhcp'
+</span><span class='line'>
+</span><span class='line'>root@OpenWrt:~# cat /etc/config/wireless
+</span><span class='line'>config wifi-device  radio0
+</span><span class='line'>        option type     mac80211
+</span><span class='line'>        option channel  11
+</span><span class='line'>        option macaddr  8c:21:0a:d8:9b:bd
+</span><span class='line'>        option hwmode   11ng
+</span><span class='line'>        option htmode   HT20
+</span><span class='line'>        list ht_capab   SHORT-GI-20
+</span><span class='line'>        list ht_capab   SHORT-GI-40
+</span><span class='line'>        list ht_capab   RX-STBC1
+</span><span class='line'>        list ht_capab   DSSS_CCK-40
+</span><span class='line'>        # REMOVE THIS LINE TO ENABLE WIFI:
+</span><span class='line'>        #option disabled 1    # ---默认为禁用wifi，需要把这个关闭才能启用wifi
+</span><span class='line'>
+</span><span class='line'>config wifi-iface
+</span><span class='line'>        option device   radio0
+</span><span class='line'>        option network  lan
+</span><span class='line'>        option mode     ap
+</span><span class='line'>        option ssid     OpenWrt
+</span><span class='line'>        option encryption none
+</span><span class='line'>
+</span><span class='line'>root@OpenWrt:~# cat /etc/config/firewall
+</span><span class='line'>config defaults
+</span><span class='line'>        option syn_flood        1
+</span><span class='line'>        option input            ACCEPT
+</span><span class='line'>        option output           ACCEPT
+</span><span class='line'>        option forward          REJECT
+</span><span class='line'># Uncomment this line to disable ipv6 rules
+</span><span class='line'>#       option disable_ipv6     1
+</span><span class='line'>
+</span><span class='line'>config zone
+</span><span class='line'>        option name             lan
+</span><span class='line'>        option network          'lan'
+</span><span class='line'>        option input            ACCEPT
+</span><span class='line'>        option output           ACCEPT
+</span><span class='line'>        option forward          REJECT
+</span><span class='line'>
+</span><span class='line'>config zone
+</span><span class='line'>        option name             wan
+</span><span class='line'>        option network          'wan'
+</span><span class='line'>        option input            ACCEPT        # ---设置为允许从wan口访问，这样方便从内网调试
+</span><span class='line'>        option output           ACCEPT
+</span><span class='line'>        option forward          REJECT
+</span><span class='line'>        option masq             1
+</span><span class='line'>        option mtu_fix          1
+</span><span class='line'>
+</span><span class='line'>config forwarding
+</span><span class='line'>        option src              lan
+</span><span class='line'>        option dest             wan
+</span><span class='line'>
+</span><span class='line'># We need to accept udp packets on port 68,
+</span><span class='line'># see https://dev.openwrt.org/ticket/4108
+</span><span class='line'>config rule
+</span><span class='line'>        option name             Allow-DHCP-Renew
+</span><span class='line'>        option src              wan
+</span><span class='line'>        option proto            udp
+</span><span class='line'>        option dest_port        68
+</span><span class='line'>        option target           ACCEPT
+</span><span class='line'>        option family           ipv4
+</span><span class='line'>
+</span><span class='line'># Allow IPv4 ping
+</span><span class='line'>config rule
+</span><span class='line'>        option name             Allow-Ping
+</span><span class='line'>        option src              wan
+</span><span class='line'>        option proto            icmp
+</span><span class='line'>        option icmp_type        echo-request
+</span><span class='line'>        option family           ipv4
+</span><span class='line'>        option target           ACCEPT
+</span><span class='line'>
+</span><span class='line'># Allow DHCPv6 replies
+</span><span class='line'># see https://dev.openwrt.org/ticket/10381
+</span><span class='line'>config rule
+</span><span class='line'>        option name             Allow-DHCPv6
+</span><span class='line'>        option src              wan
+</span><span class='line'>        option proto            udp
+</span><span class='line'>        option src_ip           fe80::/10
+</span><span class='line'>        option src_port         547
+</span><span class='line'>        option dest_ip          fe80::/10
+</span><span class='line'>        option dest_port        546
+</span><span class='line'>        option family           ipv6
+</span><span class='line'>        option target           ACCEPT
+</span><span class='line'>
+</span><span class='line'># Allow essential incoming IPv6 ICMP traffic
+</span><span class='line'>config rule
+</span><span class='line'>        option name             Allow-ICMPv6-Input
+</span><span class='line'>        option src              wan
+</span><span class='line'>        option proto    icmp
+</span><span class='line'>        list icmp_type          echo-request
+</span><span class='line'>        list icmp_type          echo-reply
+</span><span class='line'>        list icmp_type          destination-unreachable
+</span><span class='line'>        list icmp_type          packet-too-big
+</span><span class='line'>        list icmp_type          time-exceeded
+</span><span class='line'>        list icmp_type          bad-header
+</span><span class='line'>        list icmp_type          unknown-header-type
+</span><span class='line'>        list icmp_type          router-solicitation
+</span><span class='line'>        list icmp_type          neighbour-solicitation
+</span><span class='line'>        option limit            1000/sec
+</span><span class='line'>        option family           ipv6
+</span><span class='line'>        option target           ACCEPT
+</span><span class='line'>
+</span><span class='line'># Allow essential forwarded IPv6 ICMP traffic
+</span><span class='line'>config rule
+</span><span class='line'>        option name             Allow-ICMPv6-Forward
+</span><span class='line'>        option src              wan
+</span><span class='line'>        option dest             *
+</span><span class='line'>        option proto            icmp
+</span><span class='line'>        list icmp_type          echo-request
+</span><span class='line'>        list icmp_type          echo-reply
+</span><span class='line'>        list icmp_type          destination-unreachable
+</span><span class='line'>        list icmp_type          packet-too-big
+</span><span class='line'>        list icmp_type          time-exceeded
+</span><span class='line'>        list icmp_type          bad-header
+</span><span class='line'>        list icmp_type          unknown-header-type
+</span><span class='line'>        option limit            1000/sec
+</span><span class='line'>        option family           ipv6
+</span><span class='line'>        option target           ACCEPT
+</span><span class='line'>
+</span><span class='line'># include a file with users custom iptables rules
+</span><span class='line'>config include
+</span><span class='line'>        option path /etc/firewall.user
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>### EXAMPLE CONFIG SECTIONS
+</span><span class='line'># do not allow a specific ip to access wan
+</span><span class='line'>#config rule
+</span><span class='line'>#       option src              lan
+</span><span class='line'>#       option src_ip   192.168.45.2
+</span><span class='line'>#       option dest             wan
+</span><span class='line'>#       option proto    tcp
+</span><span class='line'>#       option target   REJECT
+</span><span class='line'>
+</span><span class='line'># block a specific mac on wan
+</span><span class='line'>#config rule
+</span><span class='line'>#       option dest             wan
+</span><span class='line'>#       option src_mac  00:11:22:33:44:66
+</span><span class='line'>#       option target   REJECT
+</span><span class='line'>
+</span><span class='line'># block incoming ICMP traffic on a zone
+</span><span class='line'>#config rule
+</span><span class='line'>#       option src              lan
+</span><span class='line'>#       option proto    ICMP
+</span><span class='line'>#       option target   DROP
+</span><span class='line'>
+</span><span class='line'># port redirect port coming in on wan to lan
+</span><span class='line'>#config redirect
+</span><span class='line'>#       option src                      wan
+</span><span class='line'>#       option src_dport        80
+</span><span class='line'>#       option dest                     lan
+</span><span class='line'>#       option dest_ip          192.168.16.235
+</span><span class='line'>#       option dest_port        80
+</span><span class='line'>#       option proto            tcp
+</span><span class='line'>
+</span><span class='line'># port redirect of remapped ssh port (22001) on wan
+</span><span class='line'>#config redirect
+</span><span class='line'>#       option src              wan
+</span><span class='line'>#       option src_dport        22001
+</span><span class='line'>#       option dest             lan
+</span><span class='line'>#       option dest_port        22
+</span><span class='line'>#       option proto            tcp
+</span><span class='line'>
+</span><span class='line'># allow IPsec/ESP and ISAKMP passthrough
+</span><span class='line'>#config rule
+</span><span class='line'>#       option src              wan
+</span><span class='line'>#       option dest             lan
+</span><span class='line'>#       option protocol         esp
+</span><span class='line'>#       option target           ACCEPT
+</span><span class='line'>
+</span><span class='line'>#config rule
+</span><span class='line'>#       option src              wan
+</span><span class='line'>#       option dest             lan
+</span><span class='line'>#       option src_port         500
+</span><span class='line'>#       option dest_port        500
+</span><span class='line'>#       option proto            udp
+</span><span class='line'>#       option target           ACCEPT
+</span><span class='line'>
+</span><span class='line'>### FULL CONFIG SECTIONS
+</span><span class='line'>#config rule
+</span><span class='line'>#       option src              lan
+</span><span class='line'>#       option src_ip   192.168.45.2
+</span><span class='line'>#       option src_mac  00:11:22:33:44:55
+</span><span class='line'>#       option src_port 80
+</span><span class='line'>#       option dest             wan
+</span><span class='line'>#       option dest_ip  194.25.2.129
+</span><span class='line'>#       option dest_port        120
+</span><span class='line'>#       option proto    tcp
+</span><span class='line'>#       option target   REJECT
+</span><span class='line'>
+</span><span class='line'>#config redirect
+</span><span class='line'>#       option src              lan
+</span><span class='line'>#       option src_ip   192.168.45.2
+</span><span class='line'>#       option src_mac  00:11:22:33:44:55
+</span><span class='line'>#       option src_port         1024
+</span><span class='line'>#       option src_dport        80
+</span><span class='line'>#       option dest_ip  194.25.2.129
+</span><span class='line'>#       option dest_port        120
+</span><span class='line'>#       option proto    tcp
+</span><span class='line'>
+</span><span class='line'>root@OpenWrt:~# cat /etc/firewall.user
+</span><span class='line'># This file is interpreted as shell script.
+</span><span class='line'># Put your custom iptables rules here, they will
+</span><span class='line'># be executed with each firewall (re-)start.
+</span><span class='line'>iptables -I FORWARD -o tun0 -j ACCEPT
+</span><span class='line'>#iptables -t nat -A POSTROUTING -s 172.64.1.0/24 -j MASQUERADE
+</span><span class='line'>iptables -t nat -A POSTROUTING -o br-lan -j MASQUERADE
+</span><span class='line'>iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
+</span><span class='line'>
+</span><span class='line'>iptables -t mangle -I FORWARD -o tun+ -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+</span><span class='line'>iptables -t mangle -I FORWARD -i tun+ -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+</span><span class='line'>iptables -t mangle -A OUTPUT -o tun+ -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+</span><span class='line'>iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+</span><span class='line'>
+</span><span class='line'>#iptables -I OUTPUT -o tun0 -j ACCEPT
+</span><span class='line'>#iptables -I INPUT -i tun0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+</span><span class='line'>#iptables -I FORWARD -o tun0 -j ACCEPT
+</span><span class='line'>#iptables -I FORWARD -i tun0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+</span><span class='line'>#iptables -t nat -I POSTROUTING -o tun0 -j MASQUERADE</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<p>翻墙设置：
+Cisco VPN最好的服务提供者是 <a href="https://twitter.com/paveo">@Paveo</a>，而OpenVPN最好的提供者是 <a href="https://twitter.com/cosbeta">@cosbeta</a>，这两种方式Openwrt都支持。
+这里提供的是Cisco VPN客户端解决方案，使用vpnc连接Cisco VPN。
+Cisco VPN 帐号，请自行解决。</p>
+
+<hr />
+
+<p>官方固件没有自带vpnc，需要自行安装</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@OpenWrt:~# opkg update
+</span><span class='line'>root@OpenWrt:~# opkg install vpnc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>https://w3.owind.com/pub/?s=vpnc</p>
+
+<p>防止DNS污染方法，参照 http://w3.owind.com/pub/binary/2012/04/27/%e8%b7%af%e7%94%b1%e5%99%a8%e4%b8%8a%e4%bd%bf%e7%94%a8-cisco-ipsec-vpn-client/
+每次vpn连接后自动更新 /tmp/resolv.conf.auto，域名会被污染。解决这问题去把 /etc/vpnc/vpnc-script 里的 /etc/resolv.conf 全部替换成 /tmp/resolv.conf.auto 即可。</p>
+
+<p>vpnc进程守护，从 http://w3.owind.com/pub/binary/2012/06/02/vpncwatch-%e4%bf%ae%e6%ad%a3%ef%bc%88%e5%a4%96%ef%bc%89/ 找到相应处理器的文件下载并放到 /usr/sbin/</p>
+
+<pre><code>root@OpenWrt:~# cd /usr/sbin/
+root@OpenWrt:/usr/sbin# wget http://p5.gfw.io/paveo/vpncwatch-ar
+</code></pre>
+
+<p>vpnc启动脚本，参照 http://wiki.openwrt.org/oldwiki/vpn.client.vpnc?s[]=vpnc，启动脚本放在 /etc/init.d/ 目录下，并授权相应执行权限。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@OpenWrt:~# cat /etc/init.d/vpnc
+</span><span class='line'>#!/bin/sh /etc/rc.common
+</span><span class='line'>START=75
+</span><span class='line'>STOP=10
+</span><span class='line'>
+</span><span class='line'>start() {
+</span><span class='line'>        mkdir -p -m777 /var/run/vpnc
+</span><span class='line'>        vpncwatch -c twitter.com -p 80 -i 10 vpnc /etc/vpnc/config.conf >/dev/null 2>&1
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>stop() {
+</span><span class='line'>        PID_F=/var/run/vpnc/pid
+</span><span class='line'>        if [ -f $PID_F ]; then
+</span><span class='line'>           PID=$(cat $PID_F)
+</span><span class='line'>           kill $PID
+</span><span class='line'>           while [ -d /proc/$PID ];
+</span><span class='line'>           do
+</span><span class='line'>                sleep 1
+</span><span class='line'>           done
+</span><span class='line'>        fi
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>/etc/init.d/dnsmasq restart
+/tmp/log/messages</p>
+
+<p>修复：
+焊接TTL线
+Setup serial console 115200 8n1
+Enter &#8220;tpl&#8221; as soon as U-Boot announces &#8220;Autobooting in 1 seconds&#8221;
+Download the original image: http://www.tp-link.com.cn/downloadfilesuploadfolder/2011930104462.rar extact to tftp folder
+Setup your eth0 to 192.168.1.100, you can check detail by &#8216;printenv&#8217;:</p>
+
+<pre><code>    setenv serverip 192.168.1.10;
+    setenv ipaddr 192.168.1.1;
+</code></pre>
+
+<p>Run blow command under U-Boot:</p>
+
+<pre><code>    tftpboot 0x81000000 wr703nv1_cn_3_12_11_up(110926).bin
+    erase 0x9f020000 +0x3c0000
+    cp.b 0x81000000 0x9f020000 0x3c0000
+    bootm 9f020000
+</code></pre>
 
 <p><a href="http://wiki.openwrt.org/toh/start/">OpenWRT Wiki官方支持硬件列表</a></p>
 ]]></content>
