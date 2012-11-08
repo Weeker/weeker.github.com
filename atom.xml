@@ -4,7 +4,7 @@
   <title><![CDATA[weeker.org]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-08T14:56:18+08:00</updated>
+  <updated>2012-11-08T15:27:34+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在TL-WR703N刷OpenWRT来进行VPN连接]]></title>
+    <link href="http://weeker.github.com/blog/2012/11/08/openwrt-on-tl-wr703n/"/>
+    <updated>2012-11-08T15:05:00+08:00</updated>
+    <id>http://weeker.github.com/blog/2012/11/08/openwrt-on-tl-wr703n</id>
+    <content type="html"><![CDATA[<p>硬件:TP-Link WR703N
+软件:OpenWRT</p>
+
+<p><img src="http://www.tp-link.com.cn/pages/images/products/532px/face/TL-WR703N.jpg" width="150" height="150" title="[TL-WR703N]" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[下载利器 --- Aria2 + 迅雷离线助手]]></title>
