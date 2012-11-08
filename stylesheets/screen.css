@@ -1,31 +1,39 @@
 /*
-Syntax error: Invalid CSS after "...z-border-radius": expected "}", was ": 50%;"
-        on line 21 of /home/weeker/octopress/sass/custom/_styles.scss
+Syntax error: Undefined mixin 'square'.
+        on line 35 of /home/weeker/octopress/sass/custom/_styles.scss, in `square'
+        from line 35 of /home/weeker/octopress/sass/custom/_styles.scss
         from line 10 of /home/weeker/octopress/sass/screen.scss
 
 Backtrace:
-/home/weeker/octopress/sass/custom/_styles.scss:21
+/home/weeker/octopress/sass/custom/_styles.scss:35:in `square'
+/home/weeker/octopress/sass/custom/_styles.scss:35
 /home/weeker/octopress/sass/screen.scss:10
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:1010:in `expected'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:956:in `expected'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:951:in `tok!'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:463:in `block'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:456:in `ruleset'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:518:in `block in declaration_or_ruleset'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:994:in `call'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:994:in `rethrow'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:519:in `declaration_or_ruleset'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:481:in `block_child'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:473:in `block_contents'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:462:in `block'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:456:in `ruleset'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:480:in `block_child'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:473:in `block_contents'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:58:in `stylesheet'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/scss/parser.rb:27:in `parse'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/engine.rb:327:in `_to_tree'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/engine.rb:259:in `to_tree'
-/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:144:in `visit_import'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:146:in `map'
+/home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
 /home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /home/weeker/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -67,4 +75,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"...z-border-radius\": expected \"}\", was \": 50%;\"\A         on line 21 of /home/weeker/octopress/sass/custom/_styles.scss\A         from line 10 of /home/weeker/octopress/sass/screen.scss"; }
+  content: "Syntax error: Undefined mixin 'square'.\A         on line 35 of /home/weeker/octopress/sass/custom/_styles.scss, in `square'\A         from line 35 of /home/weeker/octopress/sass/custom/_styles.scss\A         from line 10 of /home/weeker/octopress/sass/screen.scss"; }
