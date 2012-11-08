@@ -4,7 +4,7 @@
   <title><![CDATA[weeker.org]]></title>
   <link href="http://weeker.github.com/atom.xml" rel="self"/>
   <link href="http://weeker.github.com/"/>
-  <updated>2012-11-08T15:27:34+08:00</updated>
+  <updated>2012-11-08T15:40:40+08:00</updated>
   <id>http://weeker.github.com/</id>
   <author>
     <name><![CDATA[Weeker Liu]]></name>
@@ -14,14 +14,19 @@
 
   
   <entry>
-    <title type="html"><![CDATA[在TL-WR703N刷OpenWRT来进行VPN连接]]></title>
+    <title type="html"><![CDATA[利用TL-WR703N刷OpenWRT来实现VPN连接]]></title>
     <link href="http://weeker.github.com/blog/2012/11/08/openwrt-on-tl-wr703n/"/>
     <updated>2012-11-08T15:05:00+08:00</updated>
     <id>http://weeker.github.com/blog/2012/11/08/openwrt-on-tl-wr703n</id>
-    <content type="html"><![CDATA[<p>硬件:TP-Link WR703N
+    <content type="html"><![CDATA[<p>硬件:TP-Link WR703N<br/>
 软件:OpenWRT</p>
 
-<p><img src="http://www.tp-link.com.cn/pages/images/products/532px/face/TL-WR703N.jpg" width="150" height="150" title="[TL-WR703N]" ></p>
+<p><img src="http://www.tp-link.com.cn/pages/images/products/532px/stereo/TL-WR703N.jpg" alt="TL-WR703N" /></p>
+
+<pre><code>只要是可以刷OpenWRT固件的路由器，均可以实现不仅仅局限于TL-WR703N。为什么选择TL-WR703N，因为它小巧，不你想想中的还要小，另外它便宜只要99RMB。
+</code></pre>
+
+<p><a href="http://wiki.openwrt.org/toh/start/">OpenWRT Wiki官方支持硬件列表</a></p>
 ]]></content>
   </entry>
   
