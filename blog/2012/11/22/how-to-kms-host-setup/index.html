@@ -3,13 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>How to set up a fresh Windows Server 2012 Standard KMS Host in VMWare which activates Windows 7/8/2012 and Office 2010/2013 - weeker.org</title>
+	<title>Windows Server 2012 Standard KMS Host in VMWare which activates Windows 7/8/2012 and Office 2010/2013 - weeker.org</title>
 	<meta name="author" content="Weeker Liu">
 
 	
-	<meta name="description" content="在WMWare配置KMS服务器 在ESXi中安装Windows Server 2012 Standard
-确保VM不要连接互联网（可以让VM网卡不跟随启动，也可以在防火墙上设置规则）
-关闭VM，编辑VM&#8217;s .vmx文件，替换uuid.bios一行 uuid.bios = "56 4d &hellip;">
+	<meta name="description" content="此方法来此 MDL(My Digital Life Forums)，这里只是简单的记录一下 在 WMWare 配置 Windows Server 2012 Standard KMS 服务器： 在ESXi中安装Windows Server 2012 Standard
+确保VM不要连接互联网（ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -64,8 +63,10 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post">
-	<h1 class="title">How to Set Up a Fresh Windows Server 2012 Standard KMS Host in VMWare Which Activates Windows 7/8/2012 and Office 2010/2013</h1>
-	<div class="entry-content"><p>在WMWare配置KMS服务器</p>
+	<h1 class="title">Windows Server 2012 Standard KMS Host in VMWare Which Activates Windows 7/8/2012 and Office 2010/2013</h1>
+	<div class="entry-content"><p>此方法来此 <a href="http://forums.mydigitallife.info/threads/39048-HOW-TO-KMS-HOST-Setup-and-Charge-v-2-0/page223?p=676137#post676137">MDL(My Digital Life Forums)</a>，这里只是简单的记录一下</p>
+
+<p><b>在 WMWare 配置 Windows Server 2012 Standard KMS 服务器</b>：</p>
 
 <ol>
 <li>在ESXi中安装Windows Server 2012 Standard</li>
@@ -76,15 +77,13 @@
 </code></pre></li>
 <li>重新开启VM，使用管理员身份执行 &#8220;slmgr /cpky&#8221;</li>
 <li>停止 SPP Service,使用管理员身份执行 &#8220;sc stop sppsvc&#8221;</li>
-<li>替换 \windows\system32\spp\store 中的data.dat, tokens.dat文件
- (data.dat, tokens.dat可以从WinServer2012KMS.zip、Server 2012 Store.7z以及KMS-SERVER-2012-full-1.0.7z中提取,我是从KMS-SERVER-2012-full-1.0.7z提取的)</li>
+<li>替换<code>\windows\system32\spp\store</code>中的data.dat,tokens.dat文件  <br/>
+ (注:data.dat, tokens.dat可以从WinServer2012KMS.zip、Server 2012 Store.7z以及KMS-SERVER-2012-full-1.0.7z中提取,我是从KMS-SERVER-2012-full-1.0.7z提取的)</li>
 <li>从KMS-SERVER-2012-full-1.0.7z中SKMS2012.vhd提取kmshost文件夹，并拷贝到KMS中</li>
-<li>启用KMS Service
- copy/paste 下面代码到 a .reg 文件并执行
+<li><p>启用KMS Service
+ copy/paste 下面代码到 a .reg 文件并执行</p>
 
-<pre><code> code:
- ----------------------------
- Windows Registry Editor Version 5.00
+<pre><code> Windows Registry Editor Version 5.00
 
  [HKEY_USERS\S-1-5-20\Software\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
  "KmsHostConfig"=dword:00000001
@@ -94,24 +93,24 @@
 
  [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
  "KeyManagementServiceVersion"="6.2.9200.16384"
- ----------------------------
 </code></pre></li>
-<li>重启 Windows Server 2012,运行&#8221;slmgr /dlv&#8221;检测KMS licencing/activation/count 状态
-Office 2010: slmgr /dlv bfe7a195-4f8f-4f0b-a622-cf13c7d16864
-Office 2013: slmgr /dlv 2e28138a-847f-42bc-9752-61b03fff33cd</li>
+<li><p>重启 Windows Server 2012,检测KMS licencing/activation/count 状态  <br/>
+KMS： <code>slmgr /dlv</code>  <br/>
+Office 2010: <code>slmgr /dlv bfe7a195-4f8f-4f0b-a622-cf13c7d16864</code>     <br/>
+Office 2013: <code>slmgr /dlv 2e28138a-847f-42bc-9752-61b03fff33cd</code></p></li>
 <li>运行kmshost目录下 configuration 文件，执行“T”进行时间同步</li>
-<li>如果检测 Office 2010 KMS 授权没有正常工作的话
+<li>如果检测 Office 2010 KMS 授权没有正常工作的话,执行下面步骤
 
-<pre><code>"slmgr /ipk HYV6M-23DT4-YJMB8-JVW3G-RP3HH"
-"sc stop sppsvc"
-重新替换 data.dat, tokens.dat 文件
-</code></pre></li>
+<ul>
+<li><code>slmgr /ipk HYV6M-23DT4-YJMB8-JVW3G-RP3HH</code></li>
+<li><code>sc stop sppsvc</code></li>
+<li>重新替换 data.dat, tokens.dat 文件</li>
+</ul>
+</li>
 </ol>
 
 
-<p>配置 DNS 实现局域网自动激活
-http://technet.microsoft.com/en-us/library/ff793405.aspx
-http://blogs.technet.com/b/odsupport/archive/2011/11/14/how-to-discover-kms-hosts-via-a-dns-query-and-remove-them-if-need-be.aspx</p>
+<p><b>配置 DNS 实现局域网自动激活</b>:</p>
 
 <pre><code>DNS服务器正向查找区域下面添加SRV记录。
 SRV记录的属性包括：
