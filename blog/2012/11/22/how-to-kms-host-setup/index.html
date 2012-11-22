@@ -1,0 +1,180 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>How to set up a fresh Windows Server 2012 Standard KMS Host in VMWare which activates Windows 7/8/2012 and Office 2010/2013 - weeker.org</title>
+	<meta name="author" content="Weeker Liu">
+
+	
+	<meta name="description" content="在WMWare配置KMS服务器 在ESXi中安装Windows Server 2012 Standard
+确保VM不要连接互联网（可以让VM网卡不跟随启动，也可以在防火墙上设置规则）
+关闭VM，编辑VM&#8217;s .vmx文件，替换uuid.bios一行 uuid.bios = "56 4d &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="weeker.org" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	
+</head>
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<header id="header" class="inner"><div class="profilepic">	
+	<img src="/images/dp.jpg" alt="Profile Picture" style="width: 160px;">
+</div>
+<h1><a href="/">weeker.org</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<br/>
+<h3 class="alignleft">A blogging framework for hackers.</h3>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/weeker" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/Weeker" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+
+</header>
+		</div>		
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post">
+	<h1 class="title">How to Set Up a Fresh Windows Server 2012 Standard KMS Host in VMWare Which Activates Windows 7/8/2012 and Office 2010/2013</h1>
+	<div class="entry-content"><p>在WMWare配置KMS服务器</p>
+
+<ol>
+<li>在ESXi中安装Windows Server 2012 Standard</li>
+<li>确保VM不要连接互联网（可以让VM网卡不跟随启动，也可以在防火墙上设置规则）</li>
+<li>关闭VM，编辑VM&#8217;s .vmx文件，替换uuid.bios一行
+
+<pre><code> uuid.bios = "56 4d dc 18 57 75 e5 78-28 be c1 7d d2 67 73 72"
+</code></pre></li>
+<li>重新开启VM，使用管理员身份执行 &#8220;slmgr /cpky&#8221;</li>
+<li>停止 SPP Service,使用管理员身份执行 &#8220;sc stop sppsvc&#8221;</li>
+<li>替换 \windows\system32\spp\store 中的data.dat, tokens.dat文件
+ (data.dat, tokens.dat可以从WinServer2012KMS.zip、Server 2012 Store.7z以及KMS-SERVER-2012-full-1.0.7z中提取,我是从KMS-SERVER-2012-full-1.0.7z提取的)</li>
+<li>从KMS-SERVER-2012-full-1.0.7z中SKMS2012.vhd提取kmshost文件夹，并拷贝到KMS中</li>
+<li>启用KMS Service
+ copy/paste 下面代码到 a .reg 文件并执行
+
+<pre><code> code:
+ ----------------------------
+ Windows Registry Editor Version 5.00
+
+ [HKEY_USERS\S-1-5-20\Software\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+ "KmsHostConfig"=dword:00000001
+
+ [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+ "KeyManagementServiceVersion"="6.2.9200.16384"
+
+ [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+ "KeyManagementServiceVersion"="6.2.9200.16384"
+ ----------------------------
+</code></pre></li>
+<li>重启 Windows Server 2012,运行&#8221;slmgr /dlv&#8221;检测KMS licencing/activation/count 状态
+Office 2010: slmgr /dlv bfe7a195-4f8f-4f0b-a622-cf13c7d16864
+Office 2013: slmgr /dlv 2e28138a-847f-42bc-9752-61b03fff33cd</li>
+<li>运行kmshost目录下 configuration 文件，执行“T”进行时间同步</li>
+<li>如果检测 Office 2010 KMS 授权没有正常工作的话
+
+<pre><code>"slmgr /ipk HYV6M-23DT4-YJMB8-JVW3G-RP3HH"
+"sc stop sppsvc"
+重新替换 data.dat, tokens.dat 文件
+</code></pre></li>
+</ol>
+
+
+<p>配置 DNS 实现局域网自动激活
+http://technet.microsoft.com/en-us/library/ff793405.aspx
+http://blogs.technet.com/b/odsupport/archive/2011/11/14/how-to-discover-kms-hosts-via-a-dns-query-and-remove-them-if-need-be.aspx</p>
+
+<pre><code>DNS服务器正向查找区域下面添加SRV记录。
+SRV记录的属性包括：
+名称：_vlmcs._TCP
+类型：SRV
+优先级：0
+权重：0
+端口：1688
+主机名：你的kms服务器域名
+</code></pre>
+
+<p>这样弄完后就可以实现局域网内的 Windows 8 Pro and Office 2010/2013 自动激活，Windows 7 Enterprise  需要手动执行“slmgr /ato”</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Weeker Liu
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36156914-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+		</div>
+	</div>
+</body>
+</html>

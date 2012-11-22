@@ -7,8 +7,9 @@
 	<meta name="author" content="Weeker Liu">
 
 	
-	<meta name="description" content=" 纪念一下注册N年Stunnel.us域名，于2012年11月13日被NeuStar公司停止解析。
-提醒想注册 .us 域名的同学，注册.us 域名有风险请慎重。 ">
+	<meta name="description" content="在WMWare配置KMS服务器 在ESXi中安装Windows Server 2012 Standard
+确保VM不要连接互联网（可以让VM网卡不跟随启动，也可以在防火墙上设置规则）
+关闭VM，编辑VM&#8217;s .vmx文件，替换uuid.bios一行 uuid.bios = "56 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -63,6 +64,95 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner">
+
+
+    <article class="post">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-22T13:50:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title"><a href="/blog/2012/11/22/how-to-kms-host-setup/">How to Set Up a Fresh Windows Server 2012 Standard KMS Host in VMWare Which Activates Windows 7/8/2012 and Office 2010/2013</a></h1>
+	<div class="entry-content">
+		<p>在WMWare配置KMS服务器</p>
+
+<ol>
+<li>在ESXi中安装Windows Server 2012 Standard</li>
+<li>确保VM不要连接互联网（可以让VM网卡不跟随启动，也可以在防火墙上设置规则）</li>
+<li>关闭VM，编辑VM&#8217;s .vmx文件，替换uuid.bios一行
+
+<pre><code> uuid.bios = "56 4d dc 18 57 75 e5 78-28 be c1 7d d2 67 73 72"
+</code></pre></li>
+<li>重新开启VM，使用管理员身份执行 &#8220;slmgr /cpky&#8221;</li>
+<li>停止 SPP Service,使用管理员身份执行 &#8220;sc stop sppsvc&#8221;</li>
+<li>替换 \windows\system32\spp\store 中的data.dat, tokens.dat文件
+ (data.dat, tokens.dat可以从WinServer2012KMS.zip、Server 2012 Store.7z以及KMS-SERVER-2012-full-1.0.7z中提取,我是从KMS-SERVER-2012-full-1.0.7z提取的)</li>
+<li>从KMS-SERVER-2012-full-1.0.7z中SKMS2012.vhd提取kmshost文件夹，并拷贝到KMS中</li>
+<li>启用KMS Service
+ copy/paste 下面代码到 a .reg 文件并执行
+
+<pre><code> code:
+ ----------------------------
+ Windows Registry Editor Version 5.00
+
+ [HKEY_USERS\S-1-5-20\Software\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+ "KmsHostConfig"=dword:00000001
+
+ [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+ "KeyManagementServiceVersion"="6.2.9200.16384"
+
+ [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform]
+ "KeyManagementServiceVersion"="6.2.9200.16384"
+ ----------------------------
+</code></pre></li>
+<li>重启 Windows Server 2012,运行&#8221;slmgr /dlv&#8221;检测KMS licencing/activation/count 状态
+Office 2010: slmgr /dlv bfe7a195-4f8f-4f0b-a622-cf13c7d16864
+Office 2013: slmgr /dlv 2e28138a-847f-42bc-9752-61b03fff33cd</li>
+<li>运行kmshost目录下 configuration 文件，执行“T”进行时间同步</li>
+<li>如果检测 Office 2010 KMS 授权没有正常工作的话
+
+<pre><code>"slmgr /ipk HYV6M-23DT4-YJMB8-JVW3G-RP3HH"
+"sc stop sppsvc"
+重新替换 data.dat, tokens.dat 文件
+</code></pre></li>
+</ol>
+
+
+<p>配置 DNS 实现局域网自动激活
+http://technet.microsoft.com/en-us/library/ff793405.aspx
+http://blogs.technet.com/b/odsupport/archive/2011/11/14/how-to-discover-kms-hosts-via-a-dns-query-and-remove-them-if-need-be.aspx</p>
+
+<pre><code>DNS服务器正向查找区域下面添加SRV记录。
+SRV记录的属性包括：
+名称：_vlmcs._TCP
+类型：SRV
+优先级：0
+权重：0
+端口：1688
+主机名：你的kms服务器域名
+</code></pre>
+
+<p>这样弄完后就可以实现局域网内的 Windows 8 Pro and Office 2010/2013 自动激活，Windows 7 Enterprise  需要手动执行“slmgr /ato”</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post">
