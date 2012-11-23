@@ -147,6 +147,36 @@ SRV记录的属性包括：
 
 <p>这样弄完后就可以实现局域网内的 Windows 8 Pro and Office 2010/2013 自动激活，Windows 7 Enterprise  需要手动执行“slmgr /ato”</p>
 
+<p><b>手动激活 Office 2010/2013</b>    <br/>
+1、管理员身份运行CMD，然后打开Office 2010/2013安装目录，根据目录不同，一般为执行：</p>
+
+<pre><code>cd %ProgramFiles%\Microsoft Office\Office14
+cd %ProgramFiles%\Microsoft Office\Office15
+或
+cd %ProgramFiles(x86)%\Microsoft Office\Office14
+cd %ProgramFiles(x86)%\Microsoft Office\Office15
+
+cscript ospp.vbs /inpkey:"序列号" - 安装对应版本的office序列号，不包含引号
+cscript ospp.vbs /setprt:1688
+</code></pre>
+
+<p>2、设置KMS服务器地址，执行：cscript ospp.vbs /sethst:kms-server.stunnel.us</p>
+
+<p>3、激活Office 2010/2013，此过程可能需要重复才能成功，执行：cscript ospp.vbs /act</p>
+
+<p>4、查看激活状态，执行：cscript ospp.vbs /dstatus</p>
+
+<p><b>手动激活 Windows 7/8</b></p>
+
+<p>以管理员身份运行 CMD，输入以下命令：</p>
+
+<pre><code>slmgr /ipk "序列号" - 安装对应版本的 Windows 序列号，不包含引号
+slmgr /skms kms-server.stunnel.us
+slmgr /ato - 激活
+</code></pre>
+
+<p>注:可以激活 Windows 7/8 Professional and Enterprise versions</p>
+
 		
 		
 	</div>
